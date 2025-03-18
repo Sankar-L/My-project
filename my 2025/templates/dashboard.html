@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <h1>Real-Time Water Level Monitoring</h1>
+    
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <canvas id="lineChart" style="max-width: 600px; max-height: 300px;"></canvas>
+        <canvas id="barChart" style="max-width: 600px; max-height: 300px; margin-top: 20px;"></canvas>
+    </div>
+
+    <script>
+        let lineChart, barChart;
+
+        function fetchDataAndUpdateCharts() {
+            fetch('/api/data')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Fetched data:", data); // Log the fetched data
+
+                    const timestamps = data.map(entry => entry.timestamp); // Extract timestamps
+                    const waterLevels = data.map(entry => entry.water_level); // Extract water levels
+
+                    console.log("Timestamps:", timestamps); // Log timestamps
+                    console.log("Water Levels:", waterLevels); // Log water levels
+
+                    // Destroy old charts before updating
+                    if (lineChart) lineChart.destroy();
+                    if (barChart) barChart.destroy();
+
+                    // Line Chart
+                    const lineCtx = document.getElementById('lineChart').getContext('2d');
+                    lineChart = new Chart(lineCtx, {
+                        type: 'line',
+                        data: {
+                            labels: timestamps,
+                            datasets: [{
+                                label: 'Water Level (cm)',
+                                data: waterLevels,
+                                borderColor: 'blue',
+                                borderWidth: 2,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: { title: { display: true, text: 'Timestamp' }},
+                                y: { title: { display: true, text: 'Water Level (cm)' }}
+                            }
+                        }
+                    });
+
+                    // Bar Chart
+                    const barCtx = document.getElementById('barChart').getContext('2d');
+                    barChart = new Chart(barCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: timestamps,
+                            datasets: [{
+                                label: 'Water Level (cm)',
+                                data: waterLevels,
+                                backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                                borderColor: 'rgba(0, 123, 255, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: { title: { display: true, text: 'Timestamp' }},
+                                y: { title: { display: true, text: 'Water Level (cm)' }}
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    // Optionally, display an error message to the user
+                });
+        }
+
+        // Fetch data every 5 seconds
+        setInterval(fetchDataAndUpdateCharts, 5000);
+        fetchDataAndUpdateCharts(); // Initial fetch
+    </script>
+</body>
+</html>

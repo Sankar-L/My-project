@@ -1,0 +1,393 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding:0;
+    background-image: url('/static/images/bg.jpg'); 
+    background-color:darkblue;
+    
+}
+header {
+    background-color: whitesmoke;
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    margin-top:auto; 
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    padding: auto;
+    margin-bottom: auto;
+}
+
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.container {
+    width: 40%;
+    margin: 0 auto;
+}
+
+nav {
+    background-color: #0a192f;;
+    padding: 20px;
+}
+
+nav a {
+    color: whitesmoke;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash-message {
+    padding: 10px;
+    background-color: green;
+    color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('bg.jpg');
+    background-size:cover;
+    background-position: center;
+    color: whitesmoke;
+    text-align: center;
+    padding: 150px 20px;
+    position: relative;
+    overflow:hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .btn:hover {
+    background-color: #2980b9;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 50px 20px;
+    background-color:whitesmoke;
+    background-image: url('/static/images/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: whitesmoke;
+}
+
+/* Feature Box Container */
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual Feature Item */
+.feature-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Feature Image */
+.feature-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+/* Feature Title */
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Feature Description */
+.feature-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Call-to-Action Section */
+.cta {
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('bg.jpg');
+    color: white;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta .btn {
+    background-color: #fff;
+    color: #3498db;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta .btn:hover {
+    background-color: #2980b9;
+    color: #fff;
+}
+/* Login Form Styling */
+.auth-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    margin: 50px auto;
+}
+
+.auth-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container label {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.auth-container input {
+    padding: 10px 0 10px 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.auth-container button {
+    background-color:rgb(85, 135, 244);
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-container button:hover {
+    background-color: #0056b3;
+}
+
+.auth-container a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color:whitesmoke;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background: #ddd;
+}
+.footer{
+    color:whitesmoke;
+}
+
+/* Chart Container Styling */
+.chart-container {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Line Chart Styling */
+#lineChart {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Bar Chart Styling */
+#barChart {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Design for Charts */
+@media (max-width: 768px) {
+    .chart-container {
+        padding: 10px;
+    }
+
+    #lineChart,
+    #barChart {
+        max-width: 100%;
+    }
+}
+
